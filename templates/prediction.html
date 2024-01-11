@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Embeddings</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		function predict() {
+			const test_sentence = $('#test_sentence').val()
+			$.post('/prediction-api', {
+				test_sentence: test_sentence
+			}, function(response) {
+				$("#result").html(response)
+			})
+		}
+	</script>
+</head>
+<body>
+
+<div class="container">
+	<h1>Sentiment Analysis</h1>
+	<p>Enter a sentence or phrase</p>
+	<input type="text" class="form-control" id="test_sentence" /><br />
+	<button type="button" class="btn btn-success" onClick="predict()">Analyze</button><br />
+	<h1 id="result"></h1>
+</div>
+
+</body>
+</html>
